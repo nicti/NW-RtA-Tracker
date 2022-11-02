@@ -15,12 +15,13 @@ client.on('ready', () => {
 client.login(process.env.BOT_TOKEN as string);
 
 (async () => {
-    const browser = await puppeteer.launch({args: ['--no-sandbox']})
+    const browser = await puppeteer.launch({ args: [ '--no-sandbox' ] })
     const page = await browser.newPage()
     await page.setCacheEnabled(false)
     await page.goto(process.env.PAGE_URL)
     setInterval(async () => {
         await page.reload()
+        await page.addStyleTag({ content: '.ags-FactionsModule-faction-details { padding-top: 10px; }' })
         await page.waitForSelector(process.env.SCREENSHOT_ELEMENT)
         await page.waitForSelector(process.env.DROP_ELEMENT)
         const element = await page.$(process.env.SCREENSHOT_ELEMENT)

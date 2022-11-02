@@ -71,29 +71,32 @@ client.login(process.env.BOT_TOKEN);
                             case 0: return [4 /*yield*/, page.reload()];
                             case 1:
                                 _a.sent();
-                                return [4 /*yield*/, page.waitForSelector(process.env.SCREENSHOT_ELEMENT)];
+                                return [4 /*yield*/, page.addStyleTag({ content: '.ags-FactionsModule-faction-details { padding-top: 10px; }' })];
                             case 2:
                                 _a.sent();
-                                return [4 /*yield*/, page.waitForSelector(process.env.DROP_ELEMENT)];
+                                return [4 /*yield*/, page.waitForSelector(process.env.SCREENSHOT_ELEMENT)];
                             case 3:
                                 _a.sent();
-                                return [4 /*yield*/, page.$(process.env.SCREENSHOT_ELEMENT)];
+                                return [4 /*yield*/, page.waitForSelector(process.env.DROP_ELEMENT)];
                             case 4:
+                                _a.sent();
+                                return [4 /*yield*/, page.$(process.env.SCREENSHOT_ELEMENT)];
+                            case 5:
                                 element = _a.sent();
-                                if (!element) return [3 /*break*/, 7];
+                                if (!element) return [3 /*break*/, 8];
                                 time = new Date();
                                 stamp = "".concat(time.getFullYear(), "-").concat(time.getMonth() + 1, "-").concat(time.getDate(), "_").concat(time.getHours(), "-").concat(time.getMinutes());
                                 return [4 /*yield*/, element.screenshot({ path: "img/".concat(stamp, ".png") })];
-                            case 5:
+                            case 6:
                                 _a.sent();
                                 return [4 /*yield*/, page.$eval(process.env.DROP_ELEMENT, function (element) {
                                         return element.innerHTML;
                                     })];
-                            case 6:
+                            case 7:
                                 dropName = (_a.sent()).replaceAll('\n', '').trim();
                                 (0, messageHandling_1["default"])(client, stamp, dropName);
-                                _a.label = 7;
-                            case 7: return [2 /*return*/];
+                                _a.label = 8;
+                            case 8: return [2 /*return*/];
                         }
                     });
                 }); }, 5 * 60 * 1000);
