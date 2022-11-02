@@ -1,14 +1,14 @@
 import { Client, EmbedBuilder } from 'discord.js'
 
 export default function (client: Client, stamp: string, dropName: string) {
+    const embed = new EmbedBuilder()
+        .setTitle('New World - RtA Update')
+        .setDescription(`${process.env.DROP_TEXT}:\n${dropName}`)
+        .setURL(process.env.PAGE_URL)
+        .setImage(`attachment://${stamp}.png`)
+        .setTimestamp()
+        .setFooter({ text: 'Powered by nicti#4210' })
     client.channels.fetch(process.env.TARGET_CHANNEL_ID as string).then(async (channel: any) => {
-        const embed = new EmbedBuilder()
-            .setTitle('New World - RtA Update')
-            .setDescription(`${process.env.DROP_TEXT}:\n${dropName}`)
-            .setURL(process.env.PAGE_URL)
-            .setImage(`attachment://${stamp}.png`)
-            .setTimestamp()
-            .setFooter({ text: 'Powered by nicti#4210' })
         // Attempt to fetch old message to update
         await channel.messages.fetch()
         const msg = channel.messages.cache.find(m => {

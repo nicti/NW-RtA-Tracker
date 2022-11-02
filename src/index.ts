@@ -33,5 +33,5 @@ client.login(process.env.BOT_TOKEN as string);
             })).replaceAll('\n', '').trim()
             messageHandling(client, stamp, dropName)
         }
-    }, 0.1 * 60 * 1000)
+    }, 5 * 60 * 1000)
 })()
