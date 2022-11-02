@@ -15,7 +15,7 @@ client.on('ready', () => {
 client.login(process.env.BOT_TOKEN as string);
 
 (async () => {
-    const browser = await puppeteer.launch()
+    const browser = await puppeteer.launch({args: ['--no-sandbox']})
     const page = await browser.newPage()
     await page.setCacheEnabled(false)
     await page.goto(process.env.PAGE_URL)
