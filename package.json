@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "discord.js": "^14.6.0",
+    "dotenv-flow": "^3.2.0",
+    "puppeteer": "^19.2.0"
+  },
+  "scripts": {
+    "debug": "ts-node --preferTsExts src/index.ts"
+  },
+  "devDependencies": {
+    "@types/dotenv-flow": "^3.2.0"
+  }
+}
